@@ -9,7 +9,7 @@ public class Timer : UdonSharpBehaviour
     [UdonSynced] private float time;
     [UdonSynced] private bool state;
 
-    [SerializeField] private StateStr statestr;
+    [SerializeField] private TimerStateStr statestr;
     [SerializeField] private TimerTimeStr timestr;
     [SerializeField] private TimerErrorStr errorstr;
 
