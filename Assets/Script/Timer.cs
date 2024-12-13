@@ -10,7 +10,7 @@ public class Timer : UdonSharpBehaviour
     [UdonSynced] private bool state;
 
     [SerializeField] private TimerStateStr statestr;
-    [SerializeField] private TimerTimeStr timestr;
+    [SerializeField] private Transform timestr;
     [SerializeField] private TimerErrorStr errorstr;
 
     AudioSource audioSource;
@@ -29,21 +29,25 @@ public class Timer : UdonSharpBehaviour
         if (state)
         {
             time -= Time.deltaTime;
-            timestr.SetStr(time);
-
+            RequestSerialization();
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                timestr.GetComponent<TimerTimeStr>().SetStr(time);
+            }
             if (time <= 0.0f)
             {//タイマー終了
                 time = 0.0f;
+                RequestSerialization();
                 audioSource.PlayOneShot(SE);
                 OnOff();
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("SE再生");
-            audioSource.PlayOneShot(SE);
-        }
+        //if(Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Debug.Log("SE再生");
+        //    audioSource.PlayOneShot(SE);
+        //}
     }
 
     public void AddTime(float num)
@@ -56,8 +60,12 @@ public class Timer : UdonSharpBehaviour
 
         time += num;
         time = Mathf.Floor(time);
-        if (time < 0) time = 0.0f;
-        timestr.SetStr(time);
+        RequestSerialization();
+        if (time < 0) time = 0.0f; 
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
+        }
     }
 
     public void Reset()
@@ -69,12 +77,17 @@ public class Timer : UdonSharpBehaviour
         }
 
         time = 0.0f;
-        timestr.SetStr(time);
+        RequestSerialization();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
+        }
     }
 
     public void OnOff()
     {
         state ^= true;
+        RequestSerialization();
         statestr.SetStr(state);
     }
 }
