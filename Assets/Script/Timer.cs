@@ -30,9 +30,9 @@ public class Timer : UdonSharpBehaviour
         {
             time -= Time.deltaTime;
             RequestSerialization();
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < timestr.childCount; i++)
             {
-                timestr.GetComponent<TimerTimeStr>().SetStr(time);
+                timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
             }
             if (time <= 0.0f)
             {//タイマー終了
@@ -42,12 +42,6 @@ public class Timer : UdonSharpBehaviour
                 OnOff();
             }
         }
-
-        //if(Input.GetKeyDown(KeyCode.P))
-        //{
-        //    Debug.Log("SE再生");
-        //    audioSource.PlayOneShot(SE);
-        //}
     }
 
     public void AddTime(float num)
@@ -58,11 +52,16 @@ public class Timer : UdonSharpBehaviour
             return;
         }
 
+        if (!Networking.IsOwner(Networking.LocalPlayer, this.gameObject))
+        {
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        }
+
         time += num;
         time = Mathf.Floor(time);
         RequestSerialization();
         if (time < 0) time = 0.0f; 
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < timestr.childCount; i++)
         {
             timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
         }
@@ -76,9 +75,14 @@ public class Timer : UdonSharpBehaviour
             return;
         }
 
+        if (!Networking.IsOwner(Networking.LocalPlayer, this.gameObject))
+        {
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        }
+
         time = 0.0f;
         RequestSerialization();
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < timestr.childCount; i++)
         {
             timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
         }
@@ -86,8 +90,18 @@ public class Timer : UdonSharpBehaviour
 
     public void OnOff()
     {
+        if (!Networking.IsOwner(Networking.LocalPlayer, this.gameObject))
+        {
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        }
+
         state ^= true;
         RequestSerialization();
         statestr.SetStr(state);
+    }
+
+    public override void OnPlayerJoined(VRCPlayerApi player)
+    {
+        RequestSerialization();
     }
 }
