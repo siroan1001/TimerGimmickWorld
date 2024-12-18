@@ -253,9 +253,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7011583250317796841}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &760755359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1984021396593094138, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7011583250317796841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &847722666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 369701675910891077, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7011583250317796841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &924843070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1520969255820492083, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
     type: 3}
   m_PrefabInstance: {fileID: 7011583250317796841}
   m_PrefabAsset: {fileID: 0}
@@ -722,17 +734,47 @@ PrefabInstance:
       propertyPath: _syncMethod
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919038112190717344, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 919038112190717344, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
     - target: {fileID: 1042943916901062534, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 1042943916901062534, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
+    - target: {fileID: 1635578257777975236, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1635578257777975236, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 1980775572966908597, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1980775572966908597, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
     - target: {fileID: 2155174021523385110, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 2155174021523385110, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 2236818921533205053, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2236818921533205053, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 2673160668187568523, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2673160668187568523, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
     - target: {fileID: 2740133581924995815, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
@@ -745,6 +787,12 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 4188066498754357754, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 4289825419348529750, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4289825419348529750, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
     - target: {fileID: 5105514285814980910, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
@@ -813,6 +861,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5866850479214847896, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
+    - target: {fileID: 5917092997501085012, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5917092997501085012, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
     - target: {fileID: 6061367944141775566, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -825,11 +879,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 69d65cd5ddf172340871d218654df6c9,
         type: 2}
+    - target: {fileID: 7361832973732182034, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7361832973732182034, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 7716315513327016044, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7716315513327016044, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
     - target: {fileID: 7811858668935235923, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 7811858668935235923, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 8772369655497933320, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8772369655497933320, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+    - target: {fileID: 9113368029971350075, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 9113368029971350075, guid: 8ca69e7595ee8a54a82c3f874f524fe6,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1054,6 +1132,14 @@ MonoBehaviour:
     - VRC.Udon.UdonBehaviour
     - VRC.SDK3.Components.VRCPickup
     - VRC.SDK3.Components.VRCObjectSync
+  - gameObject: {fileID: 760755359}
+    ID: 28
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 924843070}
+    ID: 29
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
   portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   PlayerPersistence: []
