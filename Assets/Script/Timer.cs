@@ -16,6 +16,7 @@ public class Timer : UdonSharpBehaviour
 
     AudioSource audioSource;
     [SerializeField] private AudioClip SE;
+    [SerializeField] private bool MuteFlag;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class Timer : UdonSharpBehaviour
         state = false;
         statestr.SetStr(state);
         audioSource = GetComponent<AudioSource>();
+        MuteFlag = false;
     }
 
     private void Update()
@@ -33,8 +35,8 @@ public class Timer : UdonSharpBehaviour
             if (time <= 0.0f)
             {//タイマー終了
                 time = 0.0f;
-                audioSource.PlayOneShot(SE);
-                OnOff();
+                if(!MuteFlag) audioSource.PlayOneShot(SE);
+                state = false;
             }
 
             RequestSerialization();
@@ -85,6 +87,8 @@ public class Timer : UdonSharpBehaviour
 
     public void OnOff()
     {
+        if (time <= 0.0f) return;
+
         if (!Networking.IsOwner(Networking.LocalPlayer, this.gameObject))
         {
             SetAllObjOwner();
@@ -92,6 +96,19 @@ public class Timer : UdonSharpBehaviour
 
         state ^= true;
         RequestSerialization();
+    }
+
+    public bool Mute()
+    {
+        if (!Networking.IsOwner(Networking.LocalPlayer, this.gameObject))
+        {
+            SetAllObjOwner();
+        }
+
+        MuteFlag ^= true;
+        RequestSerialization();
+
+        return MuteFlag;
     }
 
     public override void OnPlayerJoined(VRCPlayerApi player)
