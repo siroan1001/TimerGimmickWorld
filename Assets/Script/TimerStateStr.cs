@@ -16,6 +16,7 @@ public class TimerStateStr : UdonSharpBehaviour
 
     public void SetStr(bool flag)
     {
+        //Debug.Log("State文字更新" + Networking.LocalPlayer.playerId);
         string str = "error";
         if (flag)
         {

@@ -29,13 +29,14 @@ public class Timer : UdonSharpBehaviour
 
     private void Update()
     {
+        Debug.Log("TimerUpdate" + Networking.LocalPlayer.playerId);
         if (state)
         {
             time -= Time.deltaTime;
             if (time <= 0.0f)
             {//タイマー終了
                 time = 0.0f;
-                if(!MuteFlag) audioSource.PlayOneShot(SE);
+                if (!MuteFlag) audioSource.PlayOneShot(SE);
                 state = false;
             }
 
@@ -47,10 +48,34 @@ public class Timer : UdonSharpBehaviour
         {
             timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
         }
+        //SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, nameof(UpdateAllPlayer));
     }
+
+    //public void UpdateAllPlayer()
+    //{
+    //    if (state)
+    //    {
+    //        time -= Time.deltaTime;
+    //        if (time <= 0.0f)
+    //        {//タイマー終了
+    //            time = 0.0f;
+    //            if (!MuteFlag) audioSource.PlayOneShot(SE);
+    //            state = false;
+    //        }
+
+    //        RequestSerialization();
+    //    }
+
+    //    statestr.SetStr(state);
+    //    for (int i = 0; i < timestr.childCount; i++)
+    //    {
+    //        timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
+    //    }
+    //}
 
     public void AddTime(float num)
     {
+        Debug.Log("TimerAddTime" + Networking.LocalPlayer.playerId);
         if (state)
         {
             errorstr.SetAlpha();
