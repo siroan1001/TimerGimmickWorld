@@ -7,12 +7,7 @@ using TMPro;
 
 public class TimerErrorStr : UdonSharpBehaviour
 {
-    private TextMeshPro text;
-
-    private void Start()
-    {
-        text = GetComponent<TextMeshPro>();
-    }
+    [SerializeField] private TextMeshPro text;
 
     void FixedUpdate()
     {
@@ -32,5 +27,6 @@ public class TimerErrorStr : UdonSharpBehaviour
         Color col = text.color;
         col.a = 1.0f;
         text.color = col;
+        Debug.Log("色：" + text.color);
     }
 }

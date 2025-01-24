@@ -7,16 +7,10 @@ using TMPro;
 
 public class TimerStateStr : UdonSharpBehaviour
 {
-    private TextMeshPro text;
-
-    void Start()
-    {
-        text = GetComponent<TextMeshPro>();
-    }
+    [SerializeField] private TextMeshPro text;
 
     public void SetStr(bool flag)
     {
-        //Debug.Log("State文字更新" + Networking.LocalPlayer.playerId);
         string str = "error";
         if (flag)
         {

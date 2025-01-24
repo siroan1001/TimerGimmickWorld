@@ -10,12 +10,9 @@ public class Timer : UdonSharpBehaviour
     [UdonSynced] private float time;
     [UdonSynced] private bool state;
 
-    //[SerializeField] private TimerStateStr statestr;
-    //[SerializeField] private Transform timestr;
-    //[SerializeField] private TimerErrorStr errorstr;
-
-    //[SerializeField] private TimerStateStrDemo statestr;
-    //[SerializeField] private TimerTimeStrDemo timestr;
+    [SerializeField] private TimerStateStr statestr;
+    [SerializeField] private Transform timestr;
+    [SerializeField] private TimerErrorStr errorstr;
 
     AudioSource audioSource;
     [SerializeField] private AudioClip SE;
@@ -25,65 +22,39 @@ public class Timer : UdonSharpBehaviour
     {
         time = 0.0f;
         state = false;
-        //statestr.SetStr(state);
+        statestr.SetStr(state);
         audioSource = GetComponent<AudioSource>();
         MuteFlag = false;
     }
 
     private void Update()
     {
-        //Debug.Log("TimerUpdate" + Networking.LocalPlayer.playerId);
-        //if (state)
-        //{
-        //    time -= Time.deltaTime;
-        //    if (time <= 0.0f)
-        //    {//タイマー終了
-        //        time = 0.0f;
-        //        if (!MuteFlag) audioSource.PlayOneShot(SE);
-        //        state = false;
-        //    }
+        if (state)
+        {
+            time -= Time.deltaTime;
+            if (time <= 0.0f)
+            {//タイマー終了
+                time = 0.0f;
+                if (!MuteFlag) audioSource.PlayOneShot(SE);
+                state = false;
+            }
 
-        //    RequestSerialization();
-        //}
+            RequestSerialization();
+        }
 
-        //statestr.SetStr(state);
-        //for (int i = 0; i < timestr.childCount; i++)
-        //{
-        //    timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
-        //}
-        //SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, nameof(UpdateAllPlayer));
-
-        //RequestSerialization();
+        statestr.SetStr(state);
+        for (int i = 0; i < timestr.childCount; i++)
+        {
+            timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
+        }
     }
-
-    //public void UpdateAllPlayer()
-    //{
-    //    if (state)
-    //    {
-    //        time -= Time.deltaTime;
-    //        if (time <= 0.0f)
-    //        {//タイマー終了
-    //            time = 0.0f;
-    //            if (!MuteFlag) audioSource.PlayOneShot(SE);
-    //            state = false;
-    //        }
-
-    //        RequestSerialization();
-    //    }
-
-    //    statestr.SetStr(state);
-    //    for (int i = 0; i < timestr.childCount; i++)
-    //    {
-    //        timestr.GetChild(i).GetComponent<TimerTimeStr>().SetStr(time);
-    //    }
-    //}
 
     public void AddTime(float num)
     {
-        Debug.Log("TimerAddTime" + Networking.LocalPlayer.playerId);
         if (state)
         {
-            //errorstr.SetAlpha();
+            Debug.Log("文字の表示");
+            errorstr.SetAlpha();
             return;
         }
 
@@ -102,7 +73,8 @@ public class Timer : UdonSharpBehaviour
     {
         if (state)
         {
-            //errorstr.SetAlpha();
+            Debug.Log("文字の表示");
+            errorstr.SetAlpha();
             return;
         }
 
@@ -117,7 +89,7 @@ public class Timer : UdonSharpBehaviour
 
     public void OnOff()
     {
-        //if (time <= 0.0f) return;
+        if (time <= 0.0f) return;
 
         if (!Networking.IsOwner(Networking.LocalPlayer, this.gameObject))
         {
@@ -125,7 +97,6 @@ public class Timer : UdonSharpBehaviour
         }
 
         state ^= true;
-        Debug.Log("オンオフ切り替え");
         RequestSerialization();
     }
 
@@ -165,10 +136,5 @@ public class Timer : UdonSharpBehaviour
         {
             Networking.SetOwner(Networking.LocalPlayer, children[i].gameObject);
         }
-    }
-
-    public bool State
-    {
-        get { return state; }
     }
 }

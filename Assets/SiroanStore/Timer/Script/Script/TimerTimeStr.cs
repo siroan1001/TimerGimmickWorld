@@ -7,13 +7,7 @@ using TMPro;
 
 public class TimerTimeStr : UdonSharpBehaviour
 {
-
-    private TextMeshPro text;
-
-    private void Start()
-    {
-        text = GetComponent<TextMeshPro>();
-    }
+    [SerializeField] private TextMeshPro text;
 
     public void SetStr(float num)
     {
